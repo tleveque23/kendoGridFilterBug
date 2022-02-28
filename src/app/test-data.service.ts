@@ -22,6 +22,8 @@ export class TestDataService {
 
   recherche(kendoState: State, state: { pageSize: number; page: number }): Observable<any> {
 
+    // On the full app, we are calling the backend API here....
+
     const descriptor: any = {
       logic: 'and',
       filters: []
