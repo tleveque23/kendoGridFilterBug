@@ -26,7 +26,7 @@ export class DropDownListFilterComponent extends BaseFilterCellComponent {
     return filter ? filter.value : null;
   }
 
-  @Input() public override filter: any;
+  @Input() public ddlFilter: any;
   @Input() public data: any[];
   @Input() public textField: string;
   @Input() public valueField: string;

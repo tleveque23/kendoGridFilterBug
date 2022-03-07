@@ -23,7 +23,7 @@
       <ng-template kendoGridFilterCellTemplate let-dataItem>
         <my-dropdown-filter
           id="dossierListerBureauDropdown_listbox"
-          [filter]="kendoState.filter"
+          [ddlFilter]="kendoState.filter"
           [data]="bureauList"
           textField="bureau"
           valueField="bureau"
