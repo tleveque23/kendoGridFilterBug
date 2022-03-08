@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {GridModule} from '@progress/kendo-angular-grid';
+import {GridModule, RowFilterModule} from '@progress/kendo-angular-grid';
 import {DropDownsModule} from '@progress/kendo-angular-dropdowns';
-import {DropDownListFilterComponent} from './dropDownListFilterComponent';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import {DropDownListFilterComponent} from './dropDownListFilterComponent';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     AppRoutingModule,
     GridModule,
-    DropDownsModule
+    DropDownsModule, ButtonsModule,
+    RowFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

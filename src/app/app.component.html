@@ -1,84 +1,52 @@
-
 <h1>Test</h1>
 
 <div class="col-12">
-  <kendo-grid #gridComponent
-              class="row customTransBg k-grid k-widget"
-              id="dossierPatientGrid"
-              [data]="gridDossiers"
-              [pageSize]="kendoState.take"
-              [skip]="kendoState.skip"
-              [filter]="kendoState.filter"
-              [pageable]="true"
-              [sortable]="true"
-              [sort]="kendoState.sort"
-              [filterable]="true"
-              [groupable]="false"
-              (pageChange)="pageChange($event)"
-              (sortChange)="sortChange($event)"
-              (dataStateChange)="dataStateChange($event)"
+  <kendo-grid
+    #gridComponent
+    [data]="gridDossiers"
+    [filter]="kendoState.filter"
+    [filterable]="true"
+    (dataStateChange)="dataStateChange($event)"
   >
-
     <kendo-grid-column [width]="125" field="bureau" title="Bureau">
-      <ng-template kendoGridFilterCellTemplate let-dataItem>
+      <ng-template kendoGridFilterCellTemplate let-column="column" let-filter>
         <my-dropdown-filter
-          id="dossierListerBureauDropdown_listbox"
-          [ddlFilter]="kendoState.filter"
           [data]="bureauList"
-          textField="bureau"
-          valueField="bureau"
+          [column]="column"
+          [filter]="filter"
+          [showOperators]="false"
+          width="300px"
         >
         </my-dropdown-filter>
       </ng-template>
-
     </kendo-grid-column>
 
-    <kendo-grid-column operator="startswith" field="noDossier"
-                       title="noDossier"
-                       [width]="120">
-
+    <kendo-grid-column
+      operator="startswith"
+      field="noDossier"
+      title="noDossier"
+      [width]="120"
+    >
     </kendo-grid-column>
 
-    <kendo-grid-column [width]="125" field="description"
-                       title="description">
-      <!--<ng-template kendoGridFilterCellTemplate>
-        <my-dropdown-filter
-          id="dossierListerStatutCombobox_desc"
-          [filter]="kendoState.filter"
-          [data]="raisonStatutList"
-          textField="RaisonStatutName"
-          valueField="raisonStatutActif.descriptionFr"
-        >
-        </my-dropdown-filter>
-      </ng-template>-->
-
-
+    <kendo-grid-column [width]="125" field="description" title="description">
     </kendo-grid-column>
 
-    <kendo-grid-column field="nom" operator="startswith" title="Nom"
-                       [width]="100"></kendo-grid-column>
+    <kendo-grid-column
+      field="nom"
+      operator="startswith"
+      title="Nom"
+      [width]="100"
+    ></kendo-grid-column>
 
-    <kendo-grid-column field="prenom" title="Prenom"
-                       [width]="130"></kendo-grid-column>
-
-
-
-
-
-    <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage" let-total="total">
-      <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
-      <kendo-pager-numeric-buttons [buttonCount]="10"></kendo-pager-numeric-buttons>
-      <kendo-pager-next-buttons></kendo-pager-next-buttons>
-      <div *ngIf="total > 0" class="k-pager-info k-label">item {{kendoState.skip + 1}} - {{kendoState.skip + state.pageSize}} of {{total}}</div>
-      <div *ngIf="total === 0" class="k-pager-info k-label">nothing</div>
-    </ng-template>
-
+    <kendo-grid-column
+      field="prenom"
+      title="Prenom"
+      [width]="130"
+    ></kendo-grid-column>
   </kendo-grid>
 </div>
 
-
-
-<!--<pre>{{gridDossiers | json}}</pre>-->
-
+<pre>{{kendoState | json}}</pre>
 
 <router-outlet></router-outlet>
